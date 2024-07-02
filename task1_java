@@ -1,0 +1,72 @@
+import java.util.Scanner;
+// ATM Machine Simulation
+class ATM_Machine{
+    Scanner scan = new Scanner(System.in);
+    // initial balance
+    int balance = 2000;
+
+    public void Menu(){
+        System.out.println("welcome to ATM Machine \n" +
+                "1. Check Balance \n" +
+                "2. WithDraw Amount \n" +
+                "3. Deposit Amount \n" +
+                "4. Exit ");
+    }
+    public void CheckBalance(){
+        System.out.println("The amount you with hold is : " + balance);
+    }
+
+    public void WithDrawAmount(){
+        System.out.println("Enter the amount to withdraw : " );
+        int amount = scan.nextInt();
+        if(amount > balance){
+            System.out.println("Insufficient Balance");
+        }else {
+            balance -= amount;
+            System.out.println("Withdraw Successful ");
+        }
+    }
+
+    public void DepositAmount(){
+        System.out.println("Enter the amount to Deposit : " );
+        int amount = scan.nextInt();
+        balance += amount;
+        System.out.println("Deposit Successful ");
+        }
+
+    public void button(){
+        while(true){
+            Menu();
+            System.out.println("Enter your choice: ");
+            int choice = scan.nextInt();
+
+            switch (choice){
+                case 1:
+                    CheckBalance();
+                    break;
+            case 2:
+                    WithDrawAmount();
+                    break;
+            case 3:
+                    DepositAmount();
+                    break;
+            case 4:
+                    System.out.println("Exit sucessfully ");
+                    System.exit(0);
+            default:
+                    System.out.println("Invalid Choice");
+            }
+
+        }
+    }
+
+}
+
+// Main class for running the program
+public class Main {
+    public static void main(String[] args) {
+        ATM_Machine  atm = new ATM_Machine();
+        atm.button();
+
+    }
+}
